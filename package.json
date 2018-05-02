@@ -1,0 +1,30 @@
+{
+  "name": "propertyhelper",
+  "version": "1.0.0",
+  "description": "Microservice trying to standardise observed properties and measurement units formats, adapting from existing controlled vocabularies.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabiopavesi/propertyAdapter.git"
+  },
+  "author": "Fabio Pavesi <fabio@adamassoft.it>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/fabiopavesi/propertyAdapter/issues"
+  },
+  "homepage": "https://github.com/fabiopavesi/propertyAdapter#readme",
+  "dependencies": {
+    "@types/node": "10.0.2",
+    "@types/redis": "2.8.6",
+    "axios": "0.18.0",
+    "body-parser": "1.18.2",
+    "cors": "2.8.4",
+    "express": "4.16.3",
+    "redis": "2.8.0",
+    "rxjs": "5.5.7",
+    "xmldoc": "1.1.0"
+  }
+}

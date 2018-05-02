@@ -1,0 +1,10 @@
+version: '3.2'
+services:
+  main:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: '/app'
+    command: ['nodemon', 'src/index']
+networks:
+  microservice-net:
