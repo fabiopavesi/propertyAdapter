@@ -6,8 +6,6 @@ services:
     command: ['node', 'src/index']
     depends_on:
       - redis
-    volumes:
-      - .:/app
     ports:
       - 3000:3000
     networks:
