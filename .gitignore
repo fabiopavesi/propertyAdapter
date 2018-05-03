@@ -65,6 +65,4 @@ typings/
 .idea/modules.xml
 .idea/vcs.xml
 .idea/workspace.xml
-src/ObservableProperty.js
-src/index.js
 package-lock.json
