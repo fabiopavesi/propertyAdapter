@@ -51,7 +51,7 @@ export class Main {
 
 		this.app.get('/*', (req, res) => {
 			console.log('body', req.params[0]);
-			client.get(req.params.url, (err, cached) => {
+			client.get(req.params[0], (err, cached) => {
 				if (err || !cached) {
 					const observableProperty = new ObservableProperty(req.params[0]);
 					observableProperty.retrieveLabel()

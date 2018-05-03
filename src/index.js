@@ -45,7 +45,7 @@ var Main = /** @class */ (function () {
         });
         this.app.get('/*', function (req, res) {
             console.log('body', req.params[0]);
-            client.get(req.params.url, function (err, cached) {
+            client.get(req.params[0], function (err, cached) {
                 if (err || !cached) {
                     var observableProperty_1 = new ObservableProperty_1.ObservableProperty(req.params[0]);
                     observableProperty_1.retrieveLabel()

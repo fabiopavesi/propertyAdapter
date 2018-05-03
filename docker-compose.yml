@@ -1,7 +1,7 @@
 version: '3.2'
 services:
   main:
-    image: fabiopav/property-helper:latest
+    image: fabiopav/property-adapter:latest
     working_dir: '/app'
     command: ['node', 'src/index']
     depends_on:

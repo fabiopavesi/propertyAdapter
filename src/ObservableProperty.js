@@ -33,6 +33,10 @@ var ObservableProperty = /** @class */ (function () {
             }
             _this.originalDocument = res.data;
             retVal.next(_this.label);
+        })
+            .catch(function (err) {
+            console.log('error retrieving label', err);
+            retVal.error(err);
         });
         return retVal;
     };

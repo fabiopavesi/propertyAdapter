@@ -37,6 +37,10 @@ export class ObservableProperty {
 				this.originalDocument = res.data
 				retVal.next(this.label);
 			})
+			.catch( err => {
+				console.log('error retrieving label', err);
+				retVal.error(err);
+			})
 		return retVal;
 	}
 }
