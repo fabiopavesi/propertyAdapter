@@ -74,14 +74,15 @@ export class Main {
 	fixUrl(url: string) {
 		if ( url.indexOf('http://') < 0 ) {
 			if ( url.indexOf('http:/') >= 0 ) {
-				url = url.replace(/http:\//, 'http://');
+				return url.replace(/http:\//, 'http://');
 			}
 		}
 		if ( url.indexOf('https://') < 0 ) {
 			if ( url.indexOf('https:/') >= 0 ) {
-				url = url.replace(/https:\//, 'https://');
+				return url.replace(/https:\//, 'https://');
 			}
 		}
+		return url;
 	}
 }
 
