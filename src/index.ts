@@ -58,7 +58,7 @@ export class Main {
 					observableProperty.retrieveLabel()
 						.subscribe(result => {
 							res.json(observableProperty);
-							client.set(req.params.url, JSON.stringify(observableProperty), 'EX', 60 * 60 * 24);
+							client.set(url, JSON.stringify(observableProperty), 'EX', 60 * 60 * 24);
 						})
 				} else {
 					res.json(JSON.parse(cached));

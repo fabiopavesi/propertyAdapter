@@ -53,7 +53,7 @@ var Main = /** @class */ (function () {
                     observableProperty_1.retrieveLabel()
                         .subscribe(function (result) {
                         res.json(observableProperty_1);
-                        client.set(req.params.url, JSON.stringify(observableProperty_1), 'EX', 60 * 60 * 24);
+                        client.set(url, JSON.stringify(observableProperty_1), 'EX', 60 * 60 * 24);
                     });
                 }
                 else {
