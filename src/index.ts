@@ -49,11 +49,11 @@ export class Main {
 			});
 		})
 
-		this.app.get('/:url', (req, res) => {
-			console.log('body', req.params.url);
+		this.app.get('/*', (req, res) => {
+			console.log('body', req.params[0]);
 			client.get(req.params.url, (err, cached) => {
 				if (err || !cached) {
-					const observableProperty = new ObservableProperty(req.params.url);
+					const observableProperty = new ObservableProperty(req.params[0]);
 					observableProperty.retrieveLabel()
 						.subscribe(result => {
 							res.json(observableProperty);
