@@ -19,7 +19,8 @@ var ObservableProperty = /** @class */ (function () {
             // console.log('res', res.data);
             if (_this.format === 'json') {
                 // console.log('json', JSON.stringify(res.result, null, 4));
-                _this.label = res.data.result.primaryTopic.definition;
+                _this.label = res.data.result.primaryTopic.label._value;
+                _this.definition = res.data.result.primaryTopic.definition;
             }
             else if (_this.format === 'rdf') {
                 var xmldoc = require('xmldoc');
@@ -30,6 +31,7 @@ var ObservableProperty = /** @class */ (function () {
                 // console.log('doc', JSON.stringify(prefLabel, null, 4));
                 // console.log('label', prefLabel);
                 _this.label = prefLabel;
+                _this.definition = prefLabel;
             }
             _this.originalDocument = res.data;
             retVal.next(_this.label);

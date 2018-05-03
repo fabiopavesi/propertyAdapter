@@ -4,6 +4,7 @@ import {Subject} from 'rxjs/Subject';
 export class ObservableProperty {
 	url: string;
 	label: string;
+	definition: string;
 	format = 'rdf';
 	originalDocument: any;
 
@@ -23,7 +24,8 @@ export class ObservableProperty {
 				// console.log('res', res.data);
 				if ( this.format === 'json' ) {
 					// console.log('json', JSON.stringify(res.result, null, 4));
-					this.label = res.data.result.primaryTopic.definition;
+					this.label = res.data.result.primaryTopic.label._value;
+					this.definition = res.data.result.primaryTopic.definition;
 				} else if ( this.format === 'rdf' ) {
 					var xmldoc = require('xmldoc');
 					var document = new xmldoc.XmlDocument(res.data);
@@ -33,6 +35,7 @@ export class ObservableProperty {
 					// console.log('doc', JSON.stringify(prefLabel, null, 4));
 					// console.log('label', prefLabel);
 					this.label = prefLabel;
+					this.definition = prefLabel;
 				}
 				this.originalDocument = res.data
 				retVal.next(this.label);
