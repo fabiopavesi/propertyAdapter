@@ -10,6 +10,7 @@ var client = redis.createClient({
 });
 var Main = /** @class */ (function () {
     function Main() {
+        var _this = this;
         console.log('starting main microservice');
         this.app = express();
         this.app.use(bodyParser.json());
@@ -44,10 +45,11 @@ var Main = /** @class */ (function () {
             });
         });
         this.app.get('/*', function (req, res) {
-            console.log('body', req.params[0]);
-            client.get(req.params[0], function (err, cached) {
+            var url = _this.fixUrl(req.params[0]);
+            console.log('body', url);
+            client.get(url, function (err, cached) {
                 if (err || !cached) {
-                    var observableProperty_1 = new ObservableProperty_1.ObservableProperty(req.params[0]);
+                    var observableProperty_1 = new ObservableProperty_1.ObservableProperty(url);
                     observableProperty_1.retrieveLabel()
                         .subscribe(function (result) {
                         res.json(observableProperty_1);
@@ -63,6 +65,18 @@ var Main = /** @class */ (function () {
             console.log('listening on port 3000');
         });
     }
+    Main.prototype.fixUrl = function (url) {
+        if (url.indexOf('http://') < 0) {
+            if (url.indexOf('http:/') >= 0) {
+                url = url.replace(/http:\//, 'http://');
+            }
+        }
+        if (url.indexOf('https://') < 0) {
+            if (url.indexOf('https:/') >= 0) {
+                url = url.replace(/https:\//, 'https://');
+            }
+        }
+    };
     return Main;
 }());
 exports.Main = Main;

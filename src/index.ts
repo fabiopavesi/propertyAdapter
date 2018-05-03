@@ -50,10 +50,11 @@ export class Main {
 		})
 
 		this.app.get('/*', (req, res) => {
-			console.log('body', req.params[0]);
-			client.get(req.params[0], (err, cached) => {
+			let url = this.fixUrl(req.params[0]);
+			console.log('body', url);
+			client.get(url, (err, cached) => {
 				if (err || !cached) {
-					const observableProperty = new ObservableProperty(req.params[0]);
+					const observableProperty = new ObservableProperty(url);
 					observableProperty.retrieveLabel()
 						.subscribe(result => {
 							res.json(observableProperty);
@@ -68,6 +69,19 @@ export class Main {
 		this.app.listen(3000, () => {
 			console.log('listening on port 3000');
 		})
+	}
+
+	fixUrl(url: string) {
+		if ( url.indexOf('http://') < 0 ) {
+			if ( url.indexOf('http:/') >= 0 ) {
+				url = url.replace(/http:\//, 'http://');
+			}
+		}
+		if ( url.indexOf('https://') < 0 ) {
+			if ( url.indexOf('https:/') >= 0 ) {
+				url = url.replace(/https:\//, 'https://');
+			}
+		}
 	}
 }
 
